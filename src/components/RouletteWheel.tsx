@@ -28,21 +28,93 @@ export default function RouletteWheel({
   // 색상 팔레트 모음
   const colorPalettes = [
     // 선명한 레인보우
-    ['#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7', '#DDA0DD', '#98D8C8', '#FFD93D'],
+    [
+      '#FF6B6B',
+      '#4ECDC4',
+      '#45B7D1',
+      '#96CEB4',
+      '#FFEAA7',
+      '#DDA0DD',
+      '#98D8C8',
+      '#FFD93D',
+    ],
     // 파스텔 톤
-    ['#FFB3BA', '#FFDFBA', '#FFFFBA', '#BAFFC9', '#BAE1FF', '#FFBAF3', '#E0BBE4', '#C7CEEA'],
+    [
+      '#FFB3BA',
+      '#FFDFBA',
+      '#FFFFBA',
+      '#BAFFC9',
+      '#BAE1FF',
+      '#FFBAF3',
+      '#E0BBE4',
+      '#C7CEEA',
+    ],
     // 네온 컬러
-    ['#FF006E', '#FB5607', '#FFBE0B', '#8338EC', '#3A86FF', '#06FFB4', '#FF4365', '#00D9FF'],
+    [
+      '#FF006E',
+      '#FB5607',
+      '#FFBE0B',
+      '#8338EC',
+      '#3A86FF',
+      '#06FFB4',
+      '#FF4365',
+      '#00D9FF',
+    ],
     // 어스 톤
-    ['#264653', '#2A9D8F', '#E9C46A', '#F4A261', '#E76F51', '#BC6C25', '#606C38', '#DDA15E'],
+    [
+      '#264653',
+      '#2A9D8F',
+      '#E9C46A',
+      '#F4A261',
+      '#E76F51',
+      '#BC6C25',
+      '#606C38',
+      '#DDA15E',
+    ],
     // 그라디언트 블루
-    ['#03045E', '#023E8A', '#0077B6', '#0096C7', '#00B4D8', '#48CAE4', '#90E0EF', '#ADE8F4'],
+    [
+      '#03045E',
+      '#023E8A',
+      '#0077B6',
+      '#0096C7',
+      '#00B4D8',
+      '#48CAE4',
+      '#90E0EF',
+      '#ADE8F4',
+    ],
     // 선셋 컬러
-    ['#FFCDB2', '#FFB4A2', '#E5989B', '#B5838D', '#6D6875', '#FF8DC7', '#FFC2D1', '#FFB3C6'],
+    [
+      '#FFCDB2',
+      '#FFB4A2',
+      '#E5989B',
+      '#B5838D',
+      '#6D6875',
+      '#FF8DC7',
+      '#FFC2D1',
+      '#FFB3C6',
+    ],
     // 비비드 팝
-    ['#F72585', '#B5179E', '#7209B7', '#560BAD', '#480CA8', '#3A0CA3', '#3F37C9', '#4361EE'],
+    [
+      '#F72585',
+      '#B5179E',
+      '#7209B7',
+      '#560BAD',
+      '#480CA8',
+      '#3A0CA3',
+      '#3F37C9',
+      '#4361EE',
+    ],
     // 민트 그린
-    ['#D8F3DC', '#B7E4C7', '#95D5B2', '#74C69D', '#52B788', '#40916C', '#2D6A4F', '#1B5E3F'],
+    [
+      '#D8F3DC',
+      '#B7E4C7',
+      '#95D5B2',
+      '#74C69D',
+      '#52B788',
+      '#40916C',
+      '#2D6A4F',
+      '#1B5E3F',
+    ],
   ]
 
   // 랜덤 색상 생성 함수
@@ -50,9 +122,9 @@ export default function RouletteWheel({
     const paletteIndex = Math.floor(Math.random() * colorPalettes.length)
     const selectedPalette = colorPalettes[paletteIndex]
     if (!selectedPalette) return []
-    
+
     const colors: string[] = []
-    
+
     for (let i = 0; i < members.length; i++) {
       // 팔레트 색상을 순환하면서 사용
       const color = selectedPalette[i % selectedPalette.length]
@@ -60,7 +132,7 @@ export default function RouletteWheel({
         colors.push(color)
       }
     }
-    
+
     // 색상을 섞어서 더 랜덤하게
     return colors.sort(() => Math.random() - 0.5)
   }
@@ -245,8 +317,18 @@ export default function RouletteWheel({
           onClick={handleColorChange}
           className="mb-4 px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg font-medium hover:from-purple-600 hover:to-pink-600 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-105"
         >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a6 6 0 00-2-4l-2-2V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v5l-2 2a6 6 0 00-2 4v4a2 2 0 002 2z" />
+          <svg
+            className="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a6 6 0 00-2-4l-2-2V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v5l-2 2a6 6 0 00-2 4v4a2 2 0 002 2z"
+            />
           </svg>
           색상 변경
         </button>

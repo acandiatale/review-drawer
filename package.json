@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "seed": "tsx src/scripts/seed-teams.ts"
+    "seed": "tsx scripts/seed-teams.ts"
   },
   "keywords": [],
   "author": "",
