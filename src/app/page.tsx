@@ -145,7 +145,7 @@ export default function Home() {
             <p className="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto">
               공정하고 재미있게 Pull Request 리뷰어를 선정하세요 🎯
             </p>
-            
+
             {/* 초대 코드 입력 버튼 */}
             <div className="mt-6">
               {!showCodeInput ? (
@@ -153,8 +153,18 @@ export default function Home() {
                   onClick={() => setShowCodeInput(true)}
                   className="inline-flex items-center px-6 py-3 bg-white/90 backdrop-blur-sm text-gray-700 rounded-xl font-medium hover:bg-white transition-all shadow-lg hover:shadow-xl border border-gray-200"
                 >
-                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
+                  <svg
+                    className="w-5 h-5 mr-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"
+                    />
                   </svg>
                   초대 코드 입력
                 </button>
@@ -182,8 +192,18 @@ export default function Home() {
                     }}
                     className="px-4 py-2 text-gray-500 hover:text-gray-700 transition-colors"
                   >
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M6 18L18 6M6 6l12 12"
+                      />
                     </svg>
                   </button>
                 </div>
@@ -335,7 +355,7 @@ export default function Home() {
                           <p className="text-xs text-gray-500 mt-2 mb-4">
                             24시간 동안 유효합니다
                           </p>
-                          
+
                           {/* 공유 버튼들 */}
                           <div className="flex gap-2 justify-center">
                             <button

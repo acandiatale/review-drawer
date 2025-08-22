@@ -19,7 +19,7 @@ interface RouletteResult {
 export default function InvitePage() {
   const params = useParams()
   const router = useRouter()
-  const code = params?.code as string
+  const code = params?.['code'] as string
   const [loading, setLoading] = useState(true)
   const [result, setResult] = useState<RouletteResult | null>(null)
   const [error, setError] = useState<string | null>(null)
@@ -73,7 +73,7 @@ export default function InvitePage() {
           .select('name')
           .eq('id', rouletteData.team_id)
           .single()
-        
+
         if (teamData) {
           setTeamName(teamData.name)
         }
@@ -88,8 +88,10 @@ export default function InvitePage() {
     }
   }
 
-  const topWinner = result?.selected_members?.find(m => m.position === 'top')
-  const bottomWinner = result?.selected_members?.find(m => m.position === 'bottom')
+  const topWinner = result?.selected_members?.find((m) => m.position === 'top')
+  const bottomWinner = result?.selected_members?.find(
+    (m) => m.position === 'bottom',
+  )
 
   if (loading) {
     return (
@@ -108,8 +110,18 @@ export default function InvitePage() {
         <div className="bg-white/90 backdrop-blur-lg rounded-3xl shadow-2xl p-12 max-w-md w-full mx-4">
           <div className="text-center">
             <div className="inline-flex items-center justify-center w-16 h-16 bg-red-100 rounded-full mb-4">
-              <svg className="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              <svg
+                className="w-8 h-8 text-red-500"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
               </svg>
             </div>
             <h2 className="text-2xl font-bold text-gray-800 mb-2">오류 발생</h2>
@@ -145,7 +157,10 @@ export default function InvitePage() {
               </span>
             </h1>
             <p className="text-gray-600 text-lg">
-              초대 코드: <span className="font-mono font-bold text-indigo-600">{code?.toUpperCase()}</span>
+              초대 코드:{' '}
+              <span className="font-mono font-bold text-indigo-600">
+                {code?.toUpperCase()}
+              </span>
             </p>
             {teamName && (
               <p className="text-gray-500 mt-2">
@@ -165,7 +180,8 @@ export default function InvitePage() {
                 <span className="text-4xl ml-3">🎉</span>
               </h2>
               <p className="text-gray-500 mt-2">
-                {result?.created_at && new Date(result.created_at).toLocaleString('ko-KR')}
+                {result?.created_at &&
+                  new Date(result.created_at).toLocaleString('ko-KR')}
               </p>
             </div>
 
@@ -174,15 +190,15 @@ export default function InvitePage() {
               <div className="bg-gradient-to-br from-red-50 to-pink-50 rounded-2xl p-6 border-2 border-red-200">
                 <div className="flex items-center mb-4">
                   <div className="w-3 h-3 bg-red-500 rounded-full mr-2"></div>
-                  <h3 className="text-lg font-semibold text-red-600">상단 포인터</h3>
+                  <h3 className="text-lg font-semibold text-red-600">
+                    상단 포인터
+                  </h3>
                 </div>
                 <div className="bg-white/80 rounded-xl p-4">
                   <p className="text-2xl font-bold text-gray-800 mb-1">
                     {topWinner?.name || '알 수 없음'}
                   </p>
-                  <p className="text-gray-600">
-                    {topWinner?.email || '-'}
-                  </p>
+                  <p className="text-gray-600">{topWinner?.email || '-'}</p>
                 </div>
               </div>
 
@@ -190,15 +206,15 @@ export default function InvitePage() {
               <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-6 border-2 border-blue-200">
                 <div className="flex items-center mb-4">
                   <div className="w-3 h-3 bg-blue-500 rounded-full mr-2"></div>
-                  <h3 className="text-lg font-semibold text-blue-600">하단 포인터</h3>
+                  <h3 className="text-lg font-semibold text-blue-600">
+                    하단 포인터
+                  </h3>
                 </div>
                 <div className="bg-white/80 rounded-xl p-4">
                   <p className="text-2xl font-bold text-gray-800 mb-1">
                     {bottomWinner?.name || '알 수 없음'}
                   </p>
-                  <p className="text-gray-600">
-                    {bottomWinner?.email || '-'}
-                  </p>
+                  <p className="text-gray-600">{bottomWinner?.email || '-'}</p>
                 </div>
               </div>
             </div>
@@ -206,7 +222,11 @@ export default function InvitePage() {
             {/* 참가 정보 */}
             <div className="mt-8 p-4 bg-gray-50 rounded-xl text-center">
               <p className="text-gray-600">
-                총 <span className="font-bold text-indigo-600">{result?.total_participants || 0}명</span>의 팀원이 참여했습니다
+                총{' '}
+                <span className="font-bold text-indigo-600">
+                  {result?.total_participants || 0}명
+                </span>
+                의 팀원이 참여했습니다
               </p>
             </div>
 
@@ -219,7 +239,9 @@ export default function InvitePage() {
                 새로운 룰렛 돌리기
               </button>
               <button
-                onClick={() => navigator.clipboard.writeText(window.location.href)}
+                onClick={() =>
+                  navigator.clipboard.writeText(window.location.href)
+                }
                 className="px-8 py-3 bg-white text-gray-700 rounded-xl font-medium hover:bg-gray-50 transition-all border-2 border-gray-200 hover:border-gray-300"
               >
                 링크 복사
