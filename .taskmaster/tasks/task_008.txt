@@ -1,0 +1,11 @@
+# Task ID: 8
+# Title: 당첨 효과 애니메이션 구현
+# Status: pending
+# Dependencies: 7
+# Priority: medium
+# Description: 당첨자 선정 시 시각 효과 및 애니메이션 추가
+# Details:
+룰렛이 멈춘 후 당첨자를 강조하는 애니메이션을 추가합니다. 색종이 효과, 하이라이트 등 시각적 피드백을 제공합니다.
+
+# Test Strategy:
+애니메이션이 자연스럽고 성능 이슈가 없는지 확인

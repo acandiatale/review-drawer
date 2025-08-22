@@ -1,0 +1,49 @@
+# Task ID: 3
+# Title: 데이터베이스 스키마 구현
+# Status: pending
+# Dependencies: 2
+# Priority: high
+# Description: teams, roulettes, invites 테이블 생성 및 관계 설정
+# Details:
+PRD에 정의된 대로 teams, roulettes, invites 테이블을 생성합니다. 각 테이블의 컬럼과 관계를 설정하고 필요한 인덱스를 추가합니다.
+
+# Test Strategy:
+각 테이블에 대한 CRUD 작업이 정상적으로 동작하는지 확인
+
+# Subtasks:
+## 1. teams 테이블 생성 [pending]
+### Dependencies: None
+### Description: 팀 정보를 저장하는 teams 테이블 구조 정의 및 생성
+### Details:
+id, name, description, created_at, updated_at 필드 정의
+
+## 2. team_members 테이블 생성 [pending]
+### Dependencies: 3.1
+### Description: 팀원 정보를 저장하는 team_members 테이블 생성
+### Details:
+id, team_id, name, email, avatar_url, created_at 필드 및 foreign key 설정
+
+## 3. roulettes 테이블 생성 [pending]
+### Dependencies: 3.2
+### Description: 룰렛 실행 기록을 저장하는 roulettes 테이블 생성
+### Details:
+id, team_id, selected_members, executed_at, created_at 필드 정의
+
+## 4. invites 테이블 생성 [pending]
+### Dependencies: 3.3
+### Description: 초대 코드 정보를 저장하는 invites 테이블 생성
+### Details:
+id, roulette_id, code, expires_at, used_at, created_at 필드 정의
+
+## 5. 데이터베이스 관계 설정 [pending]
+### Dependencies: 3.4
+### Description: 테이블 간 외래 키 관계 설정 및 제약 조건 추가
+### Details:
+foreign key 관계, cascade 옵션, 인덱스 추가
+
+## 6. 초기 데이터 시드 작성 [pending]
+### Dependencies: 3.5
+### Description: 개발 및 테스트를 위한 샘플 데이터 생성
+### Details:
+운영팀, 개발팀 샘플 데이터 및 테스트용 팀원 데이터 추가
+

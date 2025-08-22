@@ -1,0 +1,37 @@
+# Task ID: 11
+# Title: 초대 코드 생성 기능 구현
+# Status: pending
+# Dependencies: 10
+# Priority: high
+# Description: 고유한 초대 코드 생성 및 저장 로직
+# Details:
+룰렛 실행 후 고유한 초대 코드를 생성하는 기능을 구현합니다. 코드는 데이터베이스에 저장되며 만료 시간을 가집니다.
+
+# Test Strategy:
+생성된 코드의 고유성과 만료 기능 테스트
+
+# Subtasks:
+## 1. 초대 코드 생성 알고리즘 구현 [pending]
+### Dependencies: None
+### Description: 고유하고 예측하기 어려운 초대 코드 생성 로직
+### Details:
+UUID 또는 랜덤 문자열 조합으로 고유 코드 생성, 중복 체크 로직
+
+## 2. 초대 코드 저장 API 구현 [pending]
+### Dependencies: 11.1
+### Description: /api/invites POST 엔드포인트로 초대 코드 생성 및 저장
+### Details:
+룰렛 ID와 연결된 초대 코드 저장, 만료 시간 설정
+
+## 3. 초대 코드 만료 관리 시스템 [pending]
+### Dependencies: 11.2
+### Description: 시간 기반 초대 코드 만료 및 정리 시스템
+### Details:
+expires_at 필드 관리, 만료된 코드 자동 정리, 유효성 검사
+
+## 4. 룰렛 완료 후 초대 코드 자동 생성 [pending]
+### Dependencies: 11.3
+### Description: 룰렛 실행 완료 시 자동으로 초대 코드 생성하는 통합 로직
+### Details:
+룰렛 결과 저장과 동시에 초대 코드 생성, 사용자에게 표시
+

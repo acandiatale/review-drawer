@@ -1,0 +1,55 @@
+# Task ID: 5
+# Title: 룰렛 UI 컴포넌트 구현
+# Status: pending
+# Dependencies: 4
+# Priority: high
+# Description: 원형 룰렛 UI와 회전 애니메이션 구현
+# Details:
+Canvas 또는 SVG를 사용하여 원형 룰렛을 구현합니다. 섹터별로 팀원을 표시하고 각각 다른 색상을 할당합니다. 회전 애니메이션을 추가합니다.
+
+# Test Strategy:
+룰렛이 부드럽게 회전하고 정확한 위치에 멈추는지 확인
+
+# Subtasks:
+## 1. 룰렛 컴포넌트 기본 구조 생성 [pending]
+### Dependencies: None
+### Description: React 컴포넌트로 룰렛의 기본 구조 및 props 인터페이스 정의
+### Details:
+RouletteWheel 컴포넌트 생성, 팀원 데이터를 받는 props 인터페이스 정의
+
+## 2. Canvas 기반 룰렛 원형 그래픽 구현 [pending]
+### Dependencies: 5.1
+### Description: HTML5 Canvas를 사용한 원형 룰렛 그래픽 렌더링
+### Details:
+Canvas element, 원형 섹터 그리기, 팀원별 색상 할당 알고리즘
+
+## 3. 팀원 텍스트 및 아바타 렌더링 [pending]
+### Dependencies: 5.2
+### Description: 각 섹터에 팀원 이름과 아바타 이미지 표시
+### Details:
+텍스트 회전, 아바타 이미지 배치, 가독성을 위한 폰트 크기 조정
+
+## 4. 룰렛 중앙 핀 및 포인터 디자인 [pending]
+### Dependencies: 5.3
+### Description: 룰렛 중앙의 회전 축과 상단/하단 포인터 구현
+### Details:
+중앙 핀 디자인, 당첨 포인터 위치 설정, 시각적 하이라이트 효과
+
+## 5. 회전 애니메이션 구현 [pending]
+### Dependencies: 5.4
+### Description: 부드러운 회전 효과와 감속 애니메이션 구현
+### Details:
+CSS transform 또는 Canvas 애니메이션, easing 함수 적용
+
+## 6. 반응형 디자인 적용 [pending]
+### Dependencies: 5.5
+### Description: 다양한 화면 크기에 맞는 룰렛 크기 조정
+### Details:
+모바일, 태블릿, 데스크톱 대응 크기 조정 로직
+
+## 7. 룰렛 상태 관리 및 이벤트 처리 [pending]
+### Dependencies: 5.6
+### Description: 회전 시작/정지 상태 관리 및 사용자 인터렉션
+### Details:
+useState를 이용한 상태 관리, 클릭 이벤트 처리, 회전 중 상태 표시
+

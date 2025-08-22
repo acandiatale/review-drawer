@@ -1,0 +1,43 @@
+# Task ID: 1
+# Title: 프로젝트 초기 설정
+# Status: pending
+# Dependencies: None
+# Priority: high
+# Description: Next.js 프로젝트 생성 및 기본 구조 설정
+# Details:
+Next.js 프로젝트를 생성하고 필요한 기본 패키지들을 설치합니다. TypeScript, ESLint, Prettier 등 개발 도구를 설정하고 프로젝트 폴더 구조를 잡습니다.
+
+# Test Strategy:
+프로젝트가 정상적으로 생성되고 npm run dev로 실행되는지 확인
+
+# Subtasks:
+## 1. Next.js 프로젝트 생성 [pending]
+### Dependencies: None
+### Description: create-next-app을 사용하여 새 Next.js 프로젝트 생성
+### Details:
+npx create-next-app@latest review-drawer --typescript --tailwind --eslint --app --src-dir
+
+## 2. TypeScript 설정 최적화 [pending]
+### Dependencies: 1.1
+### Description: tsconfig.json 설정 및 타입 정의 최적화
+### Details:
+strict 모드 활성화, 절대 경로 설정, 타입 체크 옵션 구성
+
+## 3. ESLint 및 Prettier 설정 [pending]
+### Dependencies: 1.2
+### Description: 코드 품질 도구 설정 및 규칙 구성
+### Details:
+ESLint 규칙 설정, Prettier 포맷팅 규칙, VSCode 설정 파일 추가
+
+## 4. 개발 환경 패키지 설치 [pending]
+### Dependencies: 1.3
+### Description: 프로젝트에 필요한 기본 패키지들 설치
+### Details:
+React Hook Form, clsx, class-variance-authority 등 유틸리티 패키지 설치
+
+## 5. 프로젝트 폴더 구조 설정 [pending]
+### Dependencies: 1.4
+### Description: 컴포넌트, 페이지, 유틸리티 등 폴더 구조 생성
+### Details:
+src/components, src/lib, src/types, public/assets 등 폴더 구조 생성
+

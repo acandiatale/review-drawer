@@ -1,0 +1,43 @@
+# Task ID: 7
+# Title: 룰렛 로직 구현
+# Status: pending
+# Dependencies: 5
+# Priority: high
+# Description: 랜덤 선택 알고리즘 및 당첨자 2명 선정 로직
+# Details:
+룰렛이 랜덤하게 회전하고 멈추는 로직을 구현합니다. 상단과 하단 핀에 해당하는 2명의 당첨자를 선정하는 기능을 추가합니다.
+
+# Test Strategy:
+여러 번 실행하여 랜덤성과 공정성 확인
+
+# Subtasks:
+## 1. 랜덤 회전 알고리즘 구현 [pending]
+### Dependencies: None
+### Description: 공정하고 예측 불가능한 룰렛 회전 각도 생성
+### Details:
+Math.random()을 이용한 랜덤 각도 생성, 최소/최대 회전 수 설정
+
+## 2. 회전 애니메이션 제어 로직 [pending]
+### Dependencies: 7.1
+### Description: 시작부터 정지까지의 회전 애니메이션 제어
+### Details:
+가속/감속 곡선, 애니메이션 duration 계산, requestAnimationFrame 활용
+
+## 3. 상단/하단 포인터 당첨자 계산 [pending]
+### Dependencies: 7.2
+### Description: 룰렛 정지 후 포인터 위치의 팀원 식별
+### Details:
+각도 계산을 통한 섹터 위치 파악, 상단/하단 포인터 별도 당첨자 선정
+
+## 4. 룰렛 실행 상태 관리 [pending]
+### Dependencies: 7.3
+### Description: 룰렛 동작 상태 및 결과 상태 관리
+### Details:
+idle, spinning, stopped 상태 관리, 중복 실행 방지, 결과 저장
+
+## 5. 당첨자 결과 콜백 및 이벤트 [pending]
+### Dependencies: 7.4
+### Description: 당첨 결과를 상위 컴포넌트에 전달하는 시스템
+### Details:
+onComplete 콜백 함수, 당첨자 데이터 구조, 이벤트 발생 타이밍
+

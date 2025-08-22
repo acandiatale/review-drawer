@@ -1,0 +1,689 @@
+{
+  "master": {
+    "tasks": [
+      {
+        "id": 1,
+        "title": "프로젝트 초기 설정",
+        "description": "Next.js 프로젝트 생성 및 기본 구조 설정",
+        "status": "done",
+        "priority": "high",
+        "dependencies": [],
+        "details": "Next.js 프로젝트를 생성하고 필요한 기본 패키지들을 설치합니다. TypeScript, ESLint, Prettier 등 개발 도구를 설정하고 프로젝트 폴더 구조를 잡습니다.",
+        "testStrategy": "프로젝트가 정상적으로 생성되고 npm run dev로 실행되는지 확인",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Next.js 프로젝트 생성",
+            "description": "create-next-app을 사용하여 새 Next.js 프로젝트 생성",
+            "status": "done",
+            "dependencies": [],
+            "details": "npx create-next-app@latest review-drawer --typescript --tailwind --eslint --app --src-dir"
+          },
+          {
+            "id": 2,
+            "title": "TypeScript 설정 최적화",
+            "description": "tsconfig.json 설정 및 타입 정의 최적화",
+            "status": "done",
+            "dependencies": [
+              "1.1"
+            ],
+            "details": "strict 모드 활성화, 절대 경로 설정, 타입 체크 옵션 구성"
+          },
+          {
+            "id": 3,
+            "title": "ESLint 및 Prettier 설정",
+            "description": "코드 품질 도구 설정 및 규칙 구성",
+            "status": "done",
+            "dependencies": [
+              "1.2"
+            ],
+            "details": "ESLint 규칙 설정, Prettier 포맷팅 규칙, VSCode 설정 파일 추가"
+          },
+          {
+            "id": 4,
+            "title": "개발 환경 패키지 설치",
+            "description": "프로젝트에 필요한 기본 패키지들 설치",
+            "status": "done",
+            "dependencies": [
+              "1.3"
+            ],
+            "details": "React Hook Form, clsx, class-variance-authority 등 유틸리티 패키지 설치"
+          },
+          {
+            "id": 5,
+            "title": "프로젝트 폴더 구조 설정",
+            "description": "컴포넌트, 페이지, 유틸리티 등 폴더 구조 생성",
+            "status": "done",
+            "dependencies": [
+              "1.4"
+            ],
+            "details": "src/components, src/lib, src/types, public/assets 등 폴더 구조 생성"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Supabase 연동 설정",
+        "description": "Supabase 클라이언트 설정 및 환경 변수 구성",
+        "status": "done",
+        "priority": "high",
+        "dependencies": [
+          "1"
+        ],
+        "details": "Supabase 프로젝트를 생성하고 클라이언트 라이브러리를 설치합니다. 환경 변수를 설정하고 연결을 테스트합니다.",
+        "testStrategy": "Supabase 연결이 정상적으로 작동하는지 테스트 API 호출로 확인",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Supabase 프로젝트 생성",
+            "description": "Supabase 대시보드에서 새 프로젝트 생성 및 설정",
+            "status": "done",
+            "dependencies": [],
+            "details": "Supabase 계정 생성, 새 프로젝트 생성, 데이터베이스 비밀번호 설정"
+          },
+          {
+            "id": 2,
+            "title": "Supabase 클라이언트 라이브러리 설치",
+            "description": "@supabase/supabase-js 패키지 설치",
+            "status": "done",
+            "dependencies": [
+              "2.1"
+            ],
+            "details": "npm install @supabase/supabase-js 설치 및 타입 정의 확인"
+          },
+          {
+            "id": 3,
+            "title": "환경 변수 설정",
+            "description": ".env.local 파일에 Supabase 연결 정보 설정",
+            "status": "done",
+            "dependencies": [
+              "2.2"
+            ],
+            "details": "NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY 환경 변수 설정"
+          },
+          {
+            "id": 4,
+            "title": "Supabase 클라이언트 초기화",
+            "description": "Supabase 클라이언트 생성 및 연결 테스트",
+            "status": "done",
+            "dependencies": [
+              "2.3"
+            ],
+            "details": "lib/supabase.ts 파일 생성, 클라이언트 초기화 및 기본 연결 테스트"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "데이터베이스 스키마 구현",
+        "description": "teams, roulettes, invites 테이블 생성 및 관계 설정",
+        "status": "done",
+        "priority": "high",
+        "dependencies": [
+          "2"
+        ],
+        "details": "PRD에 정의된 대로 teams, roulettes, invites 테이블을 생성합니다. 각 테이블의 컬럼과 관계를 설정하고 필요한 인덱스를 추가합니다.",
+        "testStrategy": "각 테이블에 대한 CRUD 작업이 정상적으로 동작하는지 확인",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "teams 테이블 생성",
+            "description": "팀 정보를 저장하는 teams 테이블 구조 정의 및 생성",
+            "status": "done",
+            "dependencies": [],
+            "details": "id, name, description, created_at, updated_at 필드 정의"
+          },
+          {
+            "id": 2,
+            "title": "team_members 테이블 생성",
+            "description": "팀원 정보를 저장하는 team_members 테이블 생성",
+            "status": "done",
+            "dependencies": [
+              "3.1"
+            ],
+            "details": "id, team_id, name, email, avatar_url, created_at 필드 및 foreign key 설정"
+          },
+          {
+            "id": 3,
+            "title": "roulettes 테이블 생성",
+            "description": "룰렛 실행 기록을 저장하는 roulettes 테이블 생성",
+            "status": "done",
+            "dependencies": [
+              "3.2"
+            ],
+            "details": "id, team_id, selected_members, executed_at, created_at 필드 정의"
+          },
+          {
+            "id": 4,
+            "title": "invites 테이블 생성",
+            "description": "초대 코드 정보를 저장하는 invites 테이블 생성",
+            "status": "done",
+            "dependencies": [
+              "3.3"
+            ],
+            "details": "id, roulette_id, code, expires_at, used_at, created_at 필드 정의"
+          },
+          {
+            "id": 5,
+            "title": "데이터베이스 관계 설정",
+            "description": "테이블 간 외래 키 관계 설정 및 제약 조건 추가",
+            "status": "done",
+            "dependencies": [
+              "3.4"
+            ],
+            "details": "foreign key 관계, cascade 옵션, 인덱스 추가"
+          },
+          {
+            "id": 6,
+            "title": "초기 데이터 시드 작성",
+            "description": "개발 및 테스트를 위한 샘플 데이터 생성",
+            "status": "done",
+            "dependencies": [
+              "3.5"
+            ],
+            "details": "운영팀, 개발팀 샘플 데이터 및 테스트용 팀원 데이터 추가"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "메인 페이지 레이아웃 구현",
+        "description": "룰렛 영역과 팀 선택 영역이 포함된 메인 페이지 레이아웃 구성",
+        "status": "done",
+        "priority": "high",
+        "dependencies": [
+          "1"
+        ],
+        "details": "메인 페이지의 기본 레이아웃을 구현합니다. 상단에 룰렛 영역, 하단에 좌우로 구분된 팀 선택 영역을 배치합니다.",
+        "testStrategy": "반응형 디자인이 정상 작동하는지 다양한 화면 크기에서 테스트",
+        "subtasks": []
+      },
+      {
+        "id": 5,
+        "title": "룰렛 UI 컴포넌트 구현",
+        "description": "원형 룰렛 UI와 회전 애니메이션 구현",
+        "status": "done",
+        "priority": "high",
+        "dependencies": [
+          "4"
+        ],
+        "details": "Canvas 또는 SVG를 사용하여 원형 룰렛을 구현합니다. 섹터별로 팀원을 표시하고 각각 다른 색상을 할당합니다. 회전 애니메이션을 추가합니다.",
+        "testStrategy": "룰렛이 부드럽게 회전하고 정확한 위치에 멈추는지 확인",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "룰렛 컴포넌트 기본 구조 생성",
+            "description": "React 컴포넌트로 룰렛의 기본 구조 및 props 인터페이스 정의",
+            "status": "done",
+            "dependencies": [],
+            "details": "RouletteWheel 컴포넌트 생성, 팀원 데이터를 받는 props 인터페이스 정의"
+          },
+          {
+            "id": 2,
+            "title": "Canvas 기반 룰렛 원형 그래픽 구현",
+            "description": "HTML5 Canvas를 사용한 원형 룰렛 그래픽 렌더링",
+            "status": "done",
+            "dependencies": [
+              "5.1"
+            ],
+            "details": "Canvas element, 원형 섹터 그리기, 팀원별 색상 할당 알고리즘"
+          },
+          {
+            "id": 3,
+            "title": "팀원 텍스트 및 아바타 렌더링",
+            "description": "각 섹터에 팀원 이름과 아바타 이미지 표시",
+            "status": "done",
+            "dependencies": [
+              "5.2"
+            ],
+            "details": "텍스트 회전, 아바타 이미지 배치, 가독성을 위한 폰트 크기 조정"
+          },
+          {
+            "id": 4,
+            "title": "룰렛 중앙 핀 및 포인터 디자인",
+            "description": "룰렛 중앙의 회전 축과 상단/하단 포인터 구현",
+            "status": "done",
+            "dependencies": [
+              "5.3"
+            ],
+            "details": "중앙 핀 디자인, 당첨 포인터 위치 설정, 시각적 하이라이트 효과"
+          },
+          {
+            "id": 5,
+            "title": "회전 애니메이션 구현",
+            "description": "부드러운 회전 효과와 감속 애니메이션 구현",
+            "status": "done",
+            "dependencies": [
+              "5.4"
+            ],
+            "details": "CSS transform 또는 Canvas 애니메이션, easing 함수 적용"
+          },
+          {
+            "id": 6,
+            "title": "반응형 디자인 적용",
+            "description": "다양한 화면 크기에 맞는 룰렛 크기 조정",
+            "status": "done",
+            "dependencies": [
+              "5.5"
+            ],
+            "details": "모바일, 태블릿, 데스크톱 대응 크기 조정 로직"
+          },
+          {
+            "id": 7,
+            "title": "룰렛 상태 관리 및 이벤트 처리",
+            "description": "회전 시작/정지 상태 관리 및 사용자 인터렉션",
+            "status": "done",
+            "dependencies": [
+              "5.6"
+            ],
+            "details": "useState를 이용한 상태 관리, 클릭 이벤트 처리, 회전 중 상태 표시"
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "title": "팀 선택 컴포넌트 구현",
+        "description": "운영팀/개발팀 선택 UI 및 팀원 목록 표시 기능",
+        "status": "pending",
+        "priority": "medium",
+        "dependencies": [
+          "4"
+        ],
+        "details": "좌측에 운영팀, 우측에 개발팀 선택 영역을 구현합니다. 각 팀의 팀원 목록을 표시하고 선택 버튼을 추가합니다.",
+        "testStrategy": "팀 선택 시 룰렛에 팀원이 정확히 추가되는지 확인",
+        "subtasks": []
+      },
+      {
+        "id": 7,
+        "title": "룰렛 로직 구현",
+        "description": "랜덤 선택 알고리즘 및 당첨자 2명 선정 로직",
+        "status": "done",
+        "priority": "high",
+        "dependencies": [
+          "5"
+        ],
+        "details": "룰렛이 랜덤하게 회전하고 멈추는 로직을 구현합니다. 상단과 하단 핀에 해당하는 2명의 당첨자를 선정하는 기능을 추가합니다.",
+        "testStrategy": "여러 번 실행하여 랜덤성과 공정성 확인",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "랜덤 회전 알고리즘 구현",
+            "description": "공정하고 예측 불가능한 룰렛 회전 각도 생성",
+            "status": "done",
+            "dependencies": [],
+            "details": "Math.random()을 이용한 랜덤 각도 생성, 최소/최대 회전 수 설정"
+          },
+          {
+            "id": 2,
+            "title": "회전 애니메이션 제어 로직",
+            "description": "시작부터 정지까지의 회전 애니메이션 제어",
+            "status": "done",
+            "dependencies": [
+              "7.1"
+            ],
+            "details": "가속/감속 곡선, 애니메이션 duration 계산, requestAnimationFrame 활용"
+          },
+          {
+            "id": 3,
+            "title": "상단/하단 포인터 당첨자 계산",
+            "description": "룰렛 정지 후 포인터 위치의 팀원 식별",
+            "status": "done",
+            "dependencies": [
+              "7.2"
+            ],
+            "details": "각도 계산을 통한 섹터 위치 파악, 상단/하단 포인터 별도 당첨자 선정"
+          },
+          {
+            "id": 4,
+            "title": "룰렛 실행 상태 관리",
+            "description": "룰렛 동작 상태 및 결과 상태 관리",
+            "status": "done",
+            "dependencies": [
+              "7.3"
+            ],
+            "details": "idle, spinning, stopped 상태 관리, 중복 실행 방지, 결과 저장"
+          },
+          {
+            "id": 5,
+            "title": "당첨자 결과 콜백 및 이벤트",
+            "description": "당첨 결과를 상위 컴포넌트에 전달하는 시스템",
+            "status": "done",
+            "dependencies": [
+              "7.4"
+            ],
+            "details": "onComplete 콜백 함수, 당첨자 데이터 구조, 이벤트 발생 타이밍"
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "title": "당첨 효과 애니메이션 구현",
+        "description": "당첨자 선정 시 시각 효과 및 애니메이션 추가",
+        "status": "pending",
+        "priority": "medium",
+        "dependencies": [
+          "7"
+        ],
+        "details": "룰렛이 멈춘 후 당첨자를 강조하는 애니메이션을 추가합니다. 색종이 효과, 하이라이트 등 시각적 피드백을 제공합니다.",
+        "testStrategy": "애니메이션이 자연스럽고 성능 이슈가 없는지 확인",
+        "subtasks": []
+      },
+      {
+        "id": 9,
+        "title": "팀원 데이터 API 구현",
+        "description": "팀원 정보 CRUD API 엔드포인트 개발",
+        "status": "done",
+        "priority": "high",
+        "dependencies": [
+          "3"
+        ],
+        "details": "Next.js API Routes를 사용하여 팀원 정보를 관리하는 API를 구현합니다. GET, POST, PUT, DELETE 엔드포인트를 생성합니다.",
+        "testStrategy": "Postman 또는 테스트 코드로 각 엔드포인트 동작 확인",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "팀 목록 조회 API 구현",
+            "description": "/api/teams GET 엔드포인트로 모든 팀 정보 조회",
+            "status": "done",
+            "dependencies": [],
+            "details": "teams 테이블에서 모든 팀 정보를 조회하는 API 구현"
+          },
+          {
+            "id": 2,
+            "title": "팀원 목록 조회 API 구현",
+            "description": "/api/teams/[id]/members GET 엔드포인트로 특정 팀의 팀원 조회",
+            "status": "done",
+            "dependencies": [
+              "9.1"
+            ],
+            "details": "특정 팀의 모든 팀원 정보를 조회하는 API, team_id로 필터링"
+          },
+          {
+            "id": 3,
+            "title": "팀원 추가/수정 API 구현",
+            "description": "/api/teams/[id]/members POST/PUT 엔드포인트로 팀원 정보 관리",
+            "status": "done",
+            "dependencies": [
+              "9.2"
+            ],
+            "details": "새 팀원 추가 및 기존 팀원 정보 수정 API, 유효성 검사 포함"
+          },
+          {
+            "id": 4,
+            "title": "팀원 삭제 API 구현",
+            "description": "/api/teams/[id]/members/[memberId] DELETE 엔드포인트",
+            "status": "done",
+            "dependencies": [
+              "9.3"
+            ],
+            "details": "팀원 삭제 API, cascade 삭제 및 관련 데이터 정리"
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "title": "룰렛 기록 API 구현",
+        "description": "룰렛 실행 기록 저장 및 조회 API",
+        "status": "pending",
+        "priority": "medium",
+        "dependencies": [
+          "3",
+          "9"
+        ],
+        "details": "룰렛 실행 결과를 데이터베이스에 저장하고 조회하는 API를 구현합니다. 당첨자 정보와 시간을 기록합니다.",
+        "testStrategy": "룰렛 결과가 정확히 저장되고 조회되는지 확인",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "룰렛 결과 저장 API 구현",
+            "description": "/api/roulettes POST 엔드포인트로 룰렛 실행 결과 저장",
+            "status": "pending",
+            "dependencies": [],
+            "details": "룰렛 실행 결과, 당첨자 정보, 실행 시간을 roulettes 테이블에 저장"
+          },
+          {
+            "id": 2,
+            "title": "룰렛 기록 조회 API 구현",
+            "description": "/api/roulettes GET 엔드포인트로 룰렛 실행 기록 조회",
+            "status": "pending",
+            "dependencies": [
+              "10.1"
+            ],
+            "details": "팀별, 날짜별 필터링 옵션 포함한 룰렛 기록 조회 API"
+          },
+          {
+            "id": 3,
+            "title": "룰렛 상세 기록 API 구현",
+            "description": "/api/roulettes/[id] GET 엔드포인트로 특정 룰렛 실행 상세 정보",
+            "status": "pending",
+            "dependencies": [
+              "10.2"
+            ],
+            "details": "특정 룰렛 실행의 상세 정보 및 관련 당첨자 정보 조회"
+          }
+        ]
+      },
+      {
+        "id": 11,
+        "title": "초대 코드 생성 기능 구현",
+        "description": "고유한 초대 코드 생성 및 저장 로직",
+        "status": "pending",
+        "priority": "high",
+        "dependencies": [
+          "10"
+        ],
+        "details": "룰렛 실행 후 고유한 초대 코드를 생성하는 기능을 구현합니다. 코드는 데이터베이스에 저장되며 만료 시간을 가집니다.",
+        "testStrategy": "생성된 코드의 고유성과 만료 기능 테스트",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "초대 코드 생성 알고리즘 구현",
+            "description": "고유하고 예측하기 어려운 초대 코드 생성 로직",
+            "status": "pending",
+            "dependencies": [],
+            "details": "UUID 또는 랜덤 문자열 조합으로 고유 코드 생성, 중복 체크 로직"
+          },
+          {
+            "id": 2,
+            "title": "초대 코드 저장 API 구현",
+            "description": "/api/invites POST 엔드포인트로 초대 코드 생성 및 저장",
+            "status": "pending",
+            "dependencies": [
+              "11.1"
+            ],
+            "details": "룰렛 ID와 연결된 초대 코드 저장, 만료 시간 설정"
+          },
+          {
+            "id": 3,
+            "title": "초대 코드 만료 관리 시스템",
+            "description": "시간 기반 초대 코드 만료 및 정리 시스템",
+            "status": "pending",
+            "dependencies": [
+              "11.2"
+            ],
+            "details": "expires_at 필드 관리, 만료된 코드 자동 정리, 유효성 검사"
+          },
+          {
+            "id": 4,
+            "title": "룰렛 완료 후 초대 코드 자동 생성",
+            "description": "룰렛 실행 완료 시 자동으로 초대 코드 생성하는 통합 로직",
+            "status": "pending",
+            "dependencies": [
+              "11.3"
+            ],
+            "details": "룰렛 결과 저장과 동시에 초대 코드 생성, 사용자에게 표시"
+          }
+        ]
+      },
+      {
+        "id": 12,
+        "title": "초대 코드 검증 API 구현",
+        "description": "초대 코드 유효성 검증 및 당첨 정보 반환",
+        "status": "pending",
+        "priority": "high",
+        "dependencies": [
+          "11"
+        ],
+        "details": "입력받은 초대 코드를 검증하고 해당하는 당첨 정보를 반환하는 API를 구현합니다. 만료된 코드는 거부합니다.",
+        "testStrategy": "유효한 코드와 무효한 코드에 대한 응답 확인",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "초대 코드 검증 로직 구현",
+            "description": "입력된 초대 코드의 유효성 검사 로직",
+            "status": "pending",
+            "dependencies": [],
+            "details": "데이터베이스 조회, 만료 시간 확인, 사용 여부 검사"
+          },
+          {
+            "id": 2,
+            "title": "초대 코드 검증 API 엔드포인트",
+            "description": "/api/invites/verify POST 엔드포인트로 코드 검증",
+            "status": "pending",
+            "dependencies": [
+              "12.1"
+            ],
+            "details": "초대 코드 입력 받아 검증 후 당첨 정보 반환 또는 에러 메시지"
+          },
+          {
+            "id": 3,
+            "title": "코드 사용 처리 및 로그",
+            "description": "유효한 코드 사용 시 사용 기록 및 상태 업데이트",
+            "status": "pending",
+            "dependencies": [
+              "12.2"
+            ],
+            "details": "used_at 필드 업데이트, 중복 사용 방지, 사용 로그 기록"
+          }
+        ]
+      },
+      {
+        "id": 13,
+        "title": "당첨자 확인 페이지 구현",
+        "description": "초대 코드 입력 및 당첨 결과 표시 페이지",
+        "status": "pending",
+        "priority": "medium",
+        "dependencies": [
+          "12"
+        ],
+        "details": "초대 코드를 입력받는 페이지를 구현합니다. 유효한 코드 입력 시 당첨 정보와 축하 메시지를 표시합니다.",
+        "testStrategy": "다양한 초대 코드 시나리오에 대한 UI 동작 확인",
+        "subtasks": []
+      },
+      {
+        "id": 14,
+        "title": "Vercel 배포 설정",
+        "description": "Vercel 프로젝트 설정 및 환경 변수 구성",
+        "status": "pending",
+        "priority": "high",
+        "dependencies": [
+          "1",
+          "2"
+        ],
+        "details": "Vercel에 프로젝트를 연결하고 환경 변수를 설정합니다. 자동 배포를 구성하고 도메인을 설정합니다.",
+        "testStrategy": "배포된 사이트가 정상 작동하는지 확인",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Vercel 프로젝트 생성 및 연결",
+            "description": "GitHub 저장소와 Vercel 프로젝트 연결",
+            "status": "pending",
+            "dependencies": [],
+            "details": "Vercel 대시보드에서 새 프로젝트 생성, GitHub 저장소 연결"
+          },
+          {
+            "id": 2,
+            "title": "환경 변수 설정",
+            "description": "Vercel 환경 변수에 Supabase 연결 정보 설정",
+            "status": "pending",
+            "dependencies": [
+              "14.1"
+            ],
+            "details": "NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY 환경 변수 추가"
+          },
+          {
+            "id": 3,
+            "title": "빌드 및 배포 설정 최적화",
+            "description": "Next.js 빌드 설정 및 배포 최적화",
+            "status": "pending",
+            "dependencies": [
+              "14.2"
+            ],
+            "details": "next.config.js 설정, 빌드 성능 최적화, 정적 자산 처리"
+          },
+          {
+            "id": 4,
+            "title": "도메인 연결 및 SSL 설정",
+            "description": "사용자 정의 도메인 연결 및 HTTPS 설정",
+            "status": "pending",
+            "dependencies": [
+              "14.3"
+            ],
+            "details": "도메인 DNS 설정, SSL 인증서 자동 발급, HTTPS 리다이렉트"
+          }
+        ]
+      },
+      {
+        "id": 15,
+        "title": "통합 테스트 및 버그 수정",
+        "description": "전체 기능 통합 테스트 및 발견된 버그 수정",
+        "status": "pending",
+        "priority": "high",
+        "dependencies": [
+          "13",
+          "14"
+        ],
+        "details": "모든 기능을 통합하여 테스트합니다. 사용자 플로우를 따라가며 버그를 찾고 수정합니다.",
+        "testStrategy": "E2E 테스트 시나리오 작성 및 실행",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "E2E 테스트 환경 구축",
+            "description": "Cypress 또는 Playwright를 이용한 E2E 테스트 환경 설정",
+            "status": "pending",
+            "dependencies": [],
+            "details": "테스트 프레임워크 설치, 기본 설정, CI/CD 연동 준비"
+          },
+          {
+            "id": 2,
+            "title": "주요 사용자 플로우 테스트 작성",
+            "description": "룰렛 실행부터 초대 코드 확인까지 전체 플로우 테스트",
+            "status": "pending",
+            "dependencies": [
+              "15.1"
+            ],
+            "details": "팀 선택, 룰렛 실행, 결과 확인, 초대 코드 생성, 코드 검증 플로우 테스트"
+          },
+          {
+            "id": 3,
+            "title": "크로스 브라우저 및 반응형 테스트",
+            "description": "다양한 브라우저와 기기에서의 호환성 테스트",
+            "status": "pending",
+            "dependencies": [
+              "15.2"
+            ],
+            "details": "Chrome, Firefox, Safari, 모바일 브라우저 테스트"
+          },
+          {
+            "id": 4,
+            "title": "성능 최적화 및 버그 수정",
+            "description": "발견된 이슈 수정 및 성능 개선",
+            "status": "pending",
+            "dependencies": [
+              "15.3"
+            ],
+            "details": "로딩 시간 최적화, 애니메이션 성능 개선, 발견된 버그 수정"
+          }
+        ]
+      }
+    ],
+    "metadata": {
+      "createdAt": "2025-01-21T00:00:00.000Z",
+      "updatedAt": "2025-01-21T00:00:00.000Z",
+      "description": "Git Pull Request 리뷰어 랜덤 룰렛 서비스",
+      "created": "2025-08-21T08:15:18.125Z",
+      "updated": "2025-08-22T06:29:49.832Z"
+    }
+  },
+  "currentTag": "master"
+}

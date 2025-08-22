@@ -1,0 +1,11 @@
+# Task ID: 13
+# Title: 당첨자 확인 페이지 구현
+# Status: pending
+# Dependencies: 12
+# Priority: medium
+# Description: 초대 코드 입력 및 당첨 결과 표시 페이지
+# Details:
+초대 코드를 입력받는 페이지를 구현합니다. 유효한 코드 입력 시 당첨 정보와 축하 메시지를 표시합니다.
+
+# Test Strategy:
+다양한 초대 코드 시나리오에 대한 UI 동작 확인
