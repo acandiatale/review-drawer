@@ -16,6 +16,8 @@ export default function Home() {
     bottom: TeamMember
   } | null>(null)
   const [inviteCode, setInviteCode] = useState<string>('')
+  const [inputCode, setInputCode] = useState<string>('')
+  const [showCodeInput, setShowCodeInput] = useState(false)
 
   const handleMembersChange = (members: TeamMember[]) => {
     setSelectedMembers(members)
@@ -97,6 +99,12 @@ export default function Home() {
     return code
   }
 
+  const handleCodeSubmit = () => {
+    if (inputCode.trim()) {
+      window.location.href = `/invite/${inputCode.trim().toUpperCase()}`
+    }
+  }
+
   return (
     <main className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
       {/* Animated background elements */}
@@ -137,6 +145,50 @@ export default function Home() {
             <p className="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto">
               공정하고 재미있게 Pull Request 리뷰어를 선정하세요 🎯
             </p>
+            
+            {/* 초대 코드 입력 버튼 */}
+            <div className="mt-6">
+              {!showCodeInput ? (
+                <button
+                  onClick={() => setShowCodeInput(true)}
+                  className="inline-flex items-center px-6 py-3 bg-white/90 backdrop-blur-sm text-gray-700 rounded-xl font-medium hover:bg-white transition-all shadow-lg hover:shadow-xl border border-gray-200"
+                >
+                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
+                  </svg>
+                  초대 코드 입력
+                </button>
+              ) : (
+                <div className="inline-flex items-center gap-2 bg-white/90 backdrop-blur-sm rounded-xl p-2 shadow-lg border border-gray-200">
+                  <input
+                    type="text"
+                    value={inputCode}
+                    onChange={(e) => setInputCode(e.target.value.toUpperCase())}
+                    onKeyPress={(e) => e.key === 'Enter' && handleCodeSubmit()}
+                    placeholder="6자리 코드 입력"
+                    maxLength={6}
+                    className="px-4 py-2 bg-transparent outline-none font-mono text-lg w-40 text-center"
+                  />
+                  <button
+                    onClick={handleCodeSubmit}
+                    className="px-4 py-2 bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-lg font-medium hover:from-indigo-600 hover:to-purple-600 transition-all"
+                  >
+                    확인
+                  </button>
+                  <button
+                    onClick={() => {
+                      setShowCodeInput(false)
+                      setInputCode('')
+                    }}
+                    className="px-4 py-2 text-gray-500 hover:text-gray-700 transition-colors"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
 
@@ -280,9 +332,32 @@ export default function Home() {
                           <p className="text-3xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent font-mono tracking-wider">
                             {inviteCode}
                           </p>
-                          <p className="text-xs text-gray-500 mt-2">
+                          <p className="text-xs text-gray-500 mt-2 mb-4">
                             24시간 동안 유효합니다
                           </p>
+                          
+                          {/* 공유 버튼들 */}
+                          <div className="flex gap-2 justify-center">
+                            <button
+                              onClick={() => {
+                                const url = `${window.location.origin}/invite/${inviteCode}`
+                                window.open(url, '_blank')
+                              }}
+                              className="px-4 py-2 bg-white text-green-600 rounded-lg text-sm font-medium hover:bg-green-50 transition-all border border-green-200"
+                            >
+                              결과 보기
+                            </button>
+                            <button
+                              onClick={() => {
+                                const url = `${window.location.origin}/invite/${inviteCode}`
+                                navigator.clipboard.writeText(url)
+                                alert('링크가 복사되었습니다!')
+                              }}
+                              className="px-4 py-2 bg-green-600 text-white rounded-lg text-sm font-medium hover:bg-green-700 transition-all"
+                            >
+                              링크 복사
+                            </button>
+                          </div>
                         </div>
                       )}
                     </div>
